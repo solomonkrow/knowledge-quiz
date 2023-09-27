@@ -14,7 +14,7 @@ const responses = [
       { text: "to write", correct: true },
       { text: "to taste", correct: false },
     ],
-  } /* ,
+  } ,
   {
     question: "What does 'leer' stand for?",
     answers: [
@@ -70,7 +70,7 @@ const responses = [
         {text:"help", correct: true}, 
         {text:"sit", correct: false}
     ]
-  },  */,
+  }, 
 ];
 
 const questionEl = document.getElementById("question");
