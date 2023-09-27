@@ -131,10 +131,6 @@ button:disabled {
     cursor: no-drop;
 }
 
-#submitBtn, #resetBtn {
-   
-}
-
 #initials {
     padding: 5px;
     margin: 20px 0;
@@ -158,8 +154,7 @@ main section {
     margin: 100px auto;
     border-radius: 10px;
     padding: 30px;
-    border: 1px dashed var(--borderColor);
-    
+    border: 1px solid var(--borderColor);
 }
 
 main section h1 {
@@ -193,4 +188,8 @@ main section h1 {
 
 .scoreboard {
     display: none;
+}
+
+#question {
+    margin: 0 0 10px 0;
 }
