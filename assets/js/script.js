@@ -70,7 +70,7 @@ const responses = [
         {text:"help", correct: true}, 
         {text:"sit", correct: false}
     ]
-  }, 
+  }
 ];
 
 const questionEl = document.getElementById("question");
