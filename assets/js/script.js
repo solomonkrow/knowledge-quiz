@@ -14,7 +14,7 @@ const responses = [
         {text:"to write", correct: true}, 
         {text:"to taste", correct: false}
     ]
-  },
+  }/* ,
   {
     question: "What does 'leer' stand for?",
     answers: [
@@ -70,7 +70,7 @@ const responses = [
         {text:"help", correct: true}, 
         {text:"sit", correct: false}
     ]
-  }, 
+  },  */
 ];
 
 const questionEl = document.getElementById('question');
@@ -78,7 +78,6 @@ const answerBtn = document.getElementById("answer_list");
 const nextBtn = document.getElementById("next_btn");
 const submitBtn = document.getElementById("submitBtn");
 const quizBox = document.querySelector(".quiz");
-const restartBtn = document.getElementById("resetBtn");
 
 let questionIndex = 0;
 let score = 0;
@@ -105,17 +104,48 @@ function showQuestion() {
             button.dataset.correct = answer.correct;
         }
         button.addEventListener("click", selectAnswer);
-
+        
     })
 }
 
+function showScore(){
+    resetState();
+    questionEl.innerHTML = `You got ${score} pt(s) of ${responses.length}
+    !`;
+    nextBtn.innerHTML= "Play again?"
+    nextBtn.style.display = "block";
+
+    submitBtn.innerHTML = "Submit Score";
+    submitBtn.style.display = "block";
+
+    /* submitBtn.addEventListener("click", submission);
+
+    function submission() {
+    var initials = document.getElementById("initials").value;
+
+    var highscore = JSON.parse(localStorage.getItem("score")) || [];
+    highscore.push({
+        initials: initials, 
+        score: score
+    }) 
+    localStorage.setItem("score", JSON.stringify(highscore)) 
+}*/
+}
+
+function restartButton(){
+    questionIndex++;
+    if(questionIndex < responses.length) {
+        showQuestion();
+    } else {
+        showScore();
+    }
+};
 
 nextBtn.addEventListener("click", function() {
     if(questionIndex < responses.length) {
-        questionIndex++;
-        showQuestion();
+        restartButton();
     } else {
-        endQuiz();
+        startQuiz();
     }
 })
 
@@ -147,32 +177,15 @@ function selectAnswer(x) {
 
 startQuiz();
 
-function endQuiz() {
-    /* var scoreboard = document.querySelector(".scoreboard");
+/*function endQuiz() {
+     var scoreboard = document.querySelector(".scoreboard");
     scoreboard.style.display = "block";
 
-    quizBox.style.display = "none";  */
-    resetState();
-    questionEl.innerHTML = `You got ${score} pt(s) of ${responses.length}
-    !`;
-    nextBtn.innerHTML= "Play again?"
-    nextBtn.style.display = "block";
-}
+    quizBox.style.display = "none";  
+    
+}*/
 
-/*
-submitBtn.addEventListener("click", submission);
 
-function submission() {
-    var initials = document.getElementById("initials").value;
 
-    var highscore = JSON.parse(localStorage.getItem("score")) || [];
-    highscore.push({
-        initials: initials, 
-        score: score
-    }) 
-    localStorage.setItem("score", JSON.stringify(highscore))
-}
 
-restartBtn.addEventListener("click", function(){
-    window.location.reload();
-})   */
+/* restartBtn.addEventListener("click", function(){window.location.reload();})   */
